@@ -1,0 +1,27 @@
+server:
+  port: 9090
+  servlet:
+    context-path: /order
+spring:
+  application:
+    name: order-service
+   
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://admin:admin@localhost:8761/eureka/,http://admin:admin@localhost:8762/eureka/
+    healthcheck:
+      enabled: true  #健康检查打开，必须引入spring-boot-starter-actuator   
+
+management:
+  endpoints:
+    web:
+      exposure:
+        exclude: "*"   #暴露所有端口
+  endpoint:
+    shutdown:
+      enabled: true    #可以实现优雅停服           
